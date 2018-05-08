@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ExtensionModel>
+	<Runtime>
+	</Runtime>
+	
+	<Extension path = "/MonoDevelop/Ide/Commands/Tools">
+		<Command id = "ProjectGenerator.Commands.Generate"
+		         defaultHandler = "ProjectGenerator.GenerateHandler"
+		         _label = "Generate Project..." />
+	</Extension>
+
+	<Extension path = "/MonoDevelop/Ide/MainMenu/Tools">
+		<CommandItem id = "ProjectGenerator.Commands.Generate" insertafter= "ToolsSection" />
+	</Extension>
+	
+	<Extension path = "/MonoDevelop/Core/Applications">
+		<Application id = "gen-project" class = "ProjectGenerator.Application" description = "Generates a project based on the given options"/>
+	</Extension>
+
+	<ExtensionPoint path = "/MonoDevelop/ProjectGenerator/SolutionGenerators" name = "Solution generator nodes">
+		<Description>Used to register solution generators</Description>
+		<ExtensionNode name="Class" type="ProjectGenerator.SolutionGeneratorNode" objectType="ProjectGenerator.SolutionGenerator"/>
+	</ExtensionPoint>
+
+	<Extension path = "/MonoDevelop/ProjectGenerator/SolutionGenerators">
+		<Class class="ProjectGenerator.DotNetSolutionGenerator" />
+	</Extension>
+
+	<ExtensionPoint path = "/MonoDevelop/ProjectGenerator/FileGenerators" name = "File generator nodes">
+		<Description>Used to register code generators</Description>
+		<ExtensionNode name="Class" type="ProjectGenerator.FileGeneratorNode" objectType="ProjectGenerator.FileGenerator"/>
+	</ExtensionPoint>
+
+	<Extension path = "/MonoDevelop/ProjectGenerator/FileGenerators">
+		<Class class="ProjectGenerator.CSharpRoslynCodeGenerator" language="C#" buildAction="Compile" />
+		<Class class="ProjectGenerator.TextFileGenerator" />
+	</Extension>
+</ExtensionModel>
