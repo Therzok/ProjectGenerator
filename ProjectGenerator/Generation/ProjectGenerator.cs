@@ -8,7 +8,8 @@ namespace ProjectGenerator
 	public abstract class ProjectGenerator
 	{
 		public string Language { get; }
-		public IEnumerable<FileGenerator> CodeGenerators { get; }
+		public IReadOnlyCollection<FileGenerator> CodeGenerators { get; }
+		public ProjectGenerationOptions Options { get; }
 
 		protected ProjectGenerator (string[] supportedLanguages)
 		{

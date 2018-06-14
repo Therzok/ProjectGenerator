@@ -6,6 +6,16 @@ namespace ProjectGenerator
 {
 	public abstract class SolutionGenerator
 	{
+		public IEnumerable<ProjectGenerator> ProjectGenerators
+		{
+			get;
+		}
+
+		public void Generate(SolutionGenerationOptions opts)
+		{
+			OnGenerate(opts);
+		}
+
 		protected SolutionGenerator (IEnumerable<ProjectGenerator> projectGenerators)
 		{
 			ProjectGenerators = projectGenerators;
@@ -13,8 +23,6 @@ namespace ProjectGenerator
 
 		public abstract string Name { get; }
 
-		public IEnumerable<ProjectGenerator> ProjectGenerators {
-			get;
-		}
+		protected abstract void OnGenerate(SolutionGenerationOptions opts);
 	}
 }

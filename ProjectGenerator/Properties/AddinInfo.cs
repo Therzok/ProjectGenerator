@@ -36,4 +36,4 @@ using Mono.Addins.Description;
 [assembly: AddinName("ProjectGenerator")]
 [assembly: AddinCategory("IDE extensions")]
 [assembly: AddinDescription("ProjectGenerator")]
-[assembly: AddinAuthor("Mikayla Hutchinson")]
+[assembly: AddinAuthor("Marius Ungureanu")]

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Mono.Addins;
 
 namespace ProjectGenerator
@@ -11,6 +12,15 @@ namespace ProjectGenerator
 	public abstract class FileGenerator
 	{
 		public abstract string Name { get; }
+
+		public abstract string FileExtension { get; }
+
+		public void Generate(TextWriter writer, FileGenerationOptions options)
+		{
+			OnGenerate(writer, options);
+		}
+
+		protected abstract void OnGenerate(TextWriter writer, FileGenerationOptions options);
 	}
 
 	public abstract class CodeGenerator : FileGenerator
